@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= label_tag t("upload_file") %></h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for(data_upload) do |f| %>
+      <fieldset class="form-group">
+        <%= f.file_field :dados,  class: 'form-control', required: true %>
+      </fieldset>
+      <div class="actions">
+        <%= f.submit "carregar", class: 'btn btn-button btn-primary'%>
+      </div>
+    <% end %>
+  </div>
+</div>

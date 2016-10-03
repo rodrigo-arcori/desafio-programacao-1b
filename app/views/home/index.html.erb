@@ -1,0 +1,38 @@
+<div class="row">
+<%= form_tag search_sale_path, method: :get do %>
+  <div class="form-group">
+    <div class="col-sm-5">
+      <%= text_field_tag :name, @search_customer_name, class: "form-control", placeholder: "buscar comprador" %>
+    </div>
+    <%= button_to "Buscar", nil, class: "btn btn-default"%>
+  </div>
+<% end %>
+</div>
+<%= render partial: "shared/flash_messages", flash: flash %>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= label_tag t("report") %></div>
+  <div class="panel-body">
+    <table class="table table-striped table-condensed">
+          <thead>
+          <tr>
+              <th><%= label_tag t("buyer") %></th>
+              <th><%= label_tag t("description") %></th>
+              <th><%= label_tag t("price") %></th>
+              <th><%= label_tag t("address") %></th>
+              <th><%= label_tag t("vendor") %></th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @sales.each do |v| %>
+        <tr>
+            <td><%= v.customer.name %></td>
+            <td><%= v.description %></td>
+            <td><%= v.price %></td>
+            <td><%= v.address.name %></td>
+            <td><%= v.vendor.name %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
